@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Desafio_01.Models.ConsultaMarca>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="ConsultaMarcas" asp-action="Index" method="get">
+    <p>
+        CPF: <input type="text" name="cpfGenre">
+        <input type="submit" value="Filter" />
+
+        Nome: <input type="text" name="p">
+        <input type="submit" value="Filter" />
+    </p>
+   
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Nomepaciente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.Nomepaciente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.Cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
